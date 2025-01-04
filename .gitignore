@@ -4,3 +4,4 @@
 .Ruserdata
 rsconnect
 __pycache__
+*.pdf
