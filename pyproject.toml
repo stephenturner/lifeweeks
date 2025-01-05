@@ -1,6 +1,6 @@
 [project]
 name = "lifeweeks"
-version = "0.1.3.9004"
+version = "1.0.0"
 description = "Creates a plot showing your life in weeks"
 readme = "README.md"
 authors = [
