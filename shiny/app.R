@@ -1,18 +1,39 @@
 library(shiny)
 library(ggplot2)
 
+
 # UI for the application
 ui <- fluidPage(
   titlePanel("Your Life in Weeks"),
 
-  sidebarLayout(
-    sidebarPanel(
-      dateInput("birthday", "Enter your Date of Birth:", value = Sys.Date() - 30 * 365.25, format = "yyyy-mm-dd"),
-      downloadButton("download_plot", "Download PDF")
-    ),
+  # Subtitle below the title
+  fluidRow(
+    column(12,
+           tags$p(
+             tags$a("View source code on GitHub", href = "https://github.com/stephenturner/lifeweeks", target = "_blank", style = "font-size: 16px; color: #007bff; text-decoration: underline;")
+           )
+    )
+  ),
 
-    mainPanel(
-      plotOutput("life_plot", height = "600px", width = "400px") # Adjust the aspect ratio of the preview
+  # Input above the plot
+  fluidRow(
+    column(12,
+           dateInput(
+             "birthday",
+             "Enter your Date of Birth:",
+             value = Sys.Date() - 30 * 365.25,
+             format = "yyyy-mm-dd"
+           ),
+           downloadButton("download_plot", "Download PDF"),
+           tags$br(),
+           tags$br()
+    )
+  ),
+
+  # Plot below the input
+  fluidRow(
+    column(12,
+           plotOutput("life_plot", height = "1100px", width = "850px") # Larger preview size
     )
   )
 )
@@ -64,12 +85,11 @@ server <- function(input, output) {
 
   # Downloadable plot as PDF
   output$download_plot <- downloadHandler(
-    filename = function() { "life_in_weeks.pdf" },
+    filename = function() { "lifeweeks.pdf" },
     content = function(file) {
-      pdf(file, width = 8.5, height = 11) # Standard letter size
       data <- life_data()
-      print(generate_plot(data))
-      dev.off()
+      p <- generate_plot(data)
+      ggsave(file, plot=p, width=8.5, height=11)
     }
   )
 }

@@ -1,6 +1,12 @@
 import click
 from lifeweeks.plot import create_life_plot
 from lifeweeks.utils import validate_date, process_filename
+from importlib.metadata import version, PackageNotFoundError
+
+try:
+    __version__ = version("lifeweeks")
+except PackageNotFoundError:
+    __version__ = "unknown"
 
 
 @click.command(context_settings=dict(help_option_names=["-h", "--help"]))
@@ -11,6 +17,7 @@ from lifeweeks.utils import validate_date, process_filename
     default="lifeweeks.pdf",
     help="Output filename (default: lifeweeks.pdf)",
 )
+@click.version_option(__version__, '-v', '--version', help='Show the version and exit.')
 def main(birthday, output):
     """
     \b

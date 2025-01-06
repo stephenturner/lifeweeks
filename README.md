@@ -33,6 +33,7 @@ Usage: lifeweeks [OPTIONS] BIRTHDAY
 
 Options:
   -o, --output TEXT  Output filename (default: lifeweeks.pdf)
+  -v, --version      Show the version and exit.
   -h, --help         Show this message and exit.
 ```
 
