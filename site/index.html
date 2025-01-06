@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Life in Weeks</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        input[type="date"] {
+            padding: 5px;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(52, 8px);
+            /* Smaller squares */
+            gap: 1px;
+            /* Reduce spacing between blocks */
+            justify-content: center;
+            margin: 0 auto;
+        }
+
+        .block {
+            width: 8px;
+            /* Smaller width */
+            height: 8px;
+            /* Smaller height */
+            background-color: white;
+            border: 1px solid #ddd;
+        }
+
+        .block.lived {
+            background-color: #555;
+        }
+
+        .block.unlived {
+            background-color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Your Life in Weeks</h1>
+    <h2>Each square represents one week of your life</h2>
+    <label for="birthday">Enter your birthday:</label>
+    <input type="date" id="birthday" />
+
+    <div class="grid" id="grid"></div>
+
+    <script>
+        const birthdayInput = document.getElementById("birthday");
+        const gridContainer = document.getElementById("grid");
+
+        const createGrid = (weeksLived, totalWeeks) => {
+            gridContainer.innerHTML = ""; // Clear previous grid
+            for (let i = 0; i < totalWeeks; i++) {
+                const block = document.createElement("div");
+                block.classList.add("block");
+                block.classList.add(i < weeksLived ? "lived" : "unlived");
+                gridContainer.appendChild(block);
+            }
+        };
+
+        const calculateWeeksLived = (birthday) => {
+            const today = new Date();
+            const birthDate = new Date(birthday);
+            const yearsLived = (today - birthDate) / (1000 * 60 * 60 * 24 * 365.25); // Convert to years
+            const weeksLived = Math.floor(yearsLived * 52); // Convert to weeks
+            const totalWeeks = 52 * 90; // 90 years lifespan
+            return { weeksLived, totalWeeks };
+        };
+
+        birthdayInput.addEventListener("change", () => {
+            const birthday = birthdayInput.value;
+            if (!birthday) return;
+
+            const { weeksLived, totalWeeks } = calculateWeeksLived(birthday);
+            createGrid(weeksLived, totalWeeks);
+        });
+    </script>
+</body>
+
+</html>
