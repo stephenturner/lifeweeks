@@ -49,7 +49,7 @@ Result:
 
 ## R/Shiny
 
-Go to [**stephenturner.shinyapps.io/lifeweeks**](https://stephenturner.shinyapps.io/lifeweeks/) or run the [app.r](app.r) app yourself to launch the shiny app. Input your birthday and see how many weeks you have lived and how many weeks you have left. Hit the Download PDF button to save the plot.
+Go to [**stephenturner.shinyapps.io/lifeweeks**](https://stephenturner.shinyapps.io/lifeweeks/) or run the [shiny/app.r](shiny/app.r) app yourself to launch the shiny app. Input your birthday and see how many weeks you have lived and how many weeks you have left. Hit the Download PDF button to save the plot.
 
 ![](img/rshiny.png)
 
