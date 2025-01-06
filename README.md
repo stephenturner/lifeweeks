@@ -1,6 +1,10 @@
 # lifeweeks
 
-Visualize your life in weeks in either R (shiny) or Python (CLI). 
+Visualize your life in weeks in Python (CLI), R (shiny), or HTML/JavaScript.
+
+- [Python](#python)
+- [R/Shiny](#rshiny)
+- [HTML/JavaScript](#htmljavascript)
 
 Input your birthday and see how many weeks you have lived and how many weeks you have left (generously assuming a 90-year lifespan). Both the Python and R implementations provide a printable PDF. 
 
