@@ -53,3 +53,6 @@ Go to [**stephenturner.shinyapps.io/lifeweeks**](https://stephenturner.shinyapps
 
 ![](img/rshiny.png)
 
+## HTML/JavaScript
+
+Finally, there's an HTML/JavaScript implementation in [index.html](index.html). It doesn't provide a PDF download. You can view that here: **https://stephenturner.github.io/lifeweeks/**.
